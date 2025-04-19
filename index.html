@@ -22,7 +22,7 @@
     header {
       display: flex;
       align-items: center;
-      padding: 0.5rem 1rem;
+      padding: 1rem 2rem;
       background-color: #001a35;
     }
     header img {
@@ -58,12 +58,15 @@
       display: flex;
       transition: transform 0.6s ease-in-out;
       width: 100%;
+      gap: 0;
     }
     .carousel-slide {
       flex: 0 0 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      opacity: 0.3;
+      transition: opacity 0.6s ease-in-out;
     }
     .carousel-slide img {
       width: 100%;
@@ -119,6 +122,12 @@
         <a href="product-earth-rod.html" class="carousel-slide">
           <img src="images/copper_rod.png" alt="Earth Rod">
         </a>
+        <a href="product-gradient-mat.html" class="carousel-slide">
+          <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
+        </a>
+        <a href="product-connection-plate.html" class="carousel-slide">
+          <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
+        </a>
       </div>
     </div>
     <div class="carousel-buttons">
@@ -135,14 +144,18 @@
     let currentSlide = 0;
     const track = document.getElementById('carouselTrack');
     const slides = document.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
 
     function updateSlidePosition() {
+      slides.forEach((slide, index) => {
+        slide.style.opacity = index === currentSlide ? '1' : '0.3';
+      });
       const offset = -currentSlide * 100;
       track.style.transform = `translateX(${offset}%)`;
     }
 
     function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
       updateSlidePosition();
     }
 
