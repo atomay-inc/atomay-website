@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Atomay Inc - Grounding Solutions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: #001f3f;
+      color: #ffffff;
+    }
+
+    header {
+      background-color: #001f3f;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #0f3d5e;
+    }
+
+    header .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    header .logo img {
+      height: 45px;
+      margin-right: 10px;
+    }
+
+    header .logo span {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: white;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #66c2ff;
+    }
+
+    .hero {
+      background: #002b5c url('https://images.unsplash.com/photo-1612004029862-1ee694bdc3d0') center/cover no-repeat;
+      padding: 6rem 2rem;
+      text-align: center;
+      color: white;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero button {
+      background-color: #66c2ff;
+      color: #001f3f;
+      padding: 0.75rem 2rem;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .hero button:hover {
+      background-color: #33aaff;
+    }
+
+    footer {
+      background-color: #001f3f;
+      color: white;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+      border-top: 1px solid #0f3d5e;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+      }
+    }
+  </style>
+</head>
+<body onload="console.log('Page loaded successfully')">
+  <header>
+    <div class="logo">
+      <img src="download.jpeg" alt="Atomay Logo">
+      <span>ATOMAY INC</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html" onclick="console.log('Navigating to Home')">Home</a></li>
+        <li><a href="products.html" onclick="console.log('Navigating to Products Page')">Products</a></li>
+        <li><a href="about.html" onclick="console.log('Navigating to About Page')">About</a></li>
+        <li><a href="contact.html" onclick="console.log('Navigating to Contact Page')">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <h1>Engineered Grounding Solutions</h1>
+    <p>Trusted by industries worldwide — crafted in India, delivered globally</p>
+    <button onclick="console.log('View Products button clicked'); window.location.href='products.html';">View Products</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 ATOMAY INC. All rights reserved.</p>
+  </footer>
+</body>
+</html>
