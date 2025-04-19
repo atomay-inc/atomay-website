@@ -60,7 +60,7 @@
     .carousel-track {
       display: flex;
       width: max-content;
-      animation: scrollCarousel 25s steps(1, end) infinite;
+      animation: scrollCarousel 30s ease-in-out infinite;
     }
     .carousel-slide {
       flex: 0 0 100vw;
@@ -74,7 +74,31 @@
       object-fit: contain;
     }
     @keyframes scrollCarousel {
-      0% { transform: translateX(0); }
+  0% { transform: translateX(0); }
+  16.6% { transform: translateX(0); }
+  20% { transform: translateX(-100vw); }
+  36.6% { transform: translateX(-100vw); }
+  40% { transform: translateX(-200vw); }
+  56.6% { transform: translateX(-200vw); }
+  60% { transform: translateX(-300vw); }
+  76.6% { transform: translateX(-300vw); }
+  80% { transform: translateX(-400vw); }
+  96.6% { transform: translateX(-400vw); }
+  100% { transform: translateX(-500vw); }
+}
+      10% { transform: translateX(0); }
+      15% { transform: translateX(-100vw); }
+      25% { transform: translateX(-100vw); }
+      30% { transform: translateX(-200vw); }
+      40% { transform: translateX(-200vw); }
+      45% { transform: translateX(-300vw); }
+      55% { transform: translateX(-300vw); }
+      60% { transform: translateX(-400vw); }
+      70% { transform: translateX(-400vw); }
+      75% { transform: translateX(-500vw); }
+      85% { transform: translateX(-500vw); }
+      100% { transform: translateX(-600vw); }
+    }
       20% { transform: translateX(0); }
       25% { transform: translateX(-100vw); }
       45% { transform: translateX(-100vw); }
@@ -87,7 +111,7 @@
       100% { transform: translateX(-400vw); }
     }
     .carousel-buttons {
-      display: none;
+      display: flex;
     }
     .inquiry-section input,
     .inquiry-section textarea {
@@ -123,20 +147,48 @@
       <a href="product-earth-rod.html" class="carousel-slide">
         <img src="images/copper_rod.png" alt="Earth Rod">
       </a>
-      <a href="product-gradient-mat.html" class="carousel-slide">
-        <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
+      <a href="product-ground-bar.html" class="carousel-slide">
+        <img src="images/bare_copper_bar.jpg" alt="Ground Bar">
       </a>
       <a href="product-connection-plate.html" class="carousel-slide">
         <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
+      </a>
+      <a href="product-gradient-mat.html" class="carousel-slide">
+        <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
       </a>
       <!-- Duplicate for seamless loop -->
       <a href="product-ground-plate.html" class="carousel-slide">
         <img src="images/copper_plate.jpg" alt="Ground Plate Duplicate">
       </a>
     </div>
-  </section>
+    <div class="carousel-buttons">
+  <button onclick="moveCarousel(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; color: #ccc; font-size: 2rem; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.3s ease; border-radius: 4px;">❮</button>
+  <button onclick="moveCarousel(1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; color: #ccc; font-size: 2rem; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.3s ease; border-radius: 4px;">❯</button>
+</div>
+<style>
+  .carousel-buttons button:hover {
+    background-color: #ffffff33;
+  }
+</style>
+</section>
 
-  <section class="inquiry-section">
+<script>
+  let manualIndex = 0;
+  const manualTrack = document.getElementById('carouselTrack');
+  const slides = manualTrack.querySelectorAll('.carousel-slide');
+  const totalSlides = slides.length;
+
+  function moveCarousel(direction) {
+    manualIndex = (manualIndex + direction + totalSlides) % totalSlides;
+    manualTrack.style.animation = 'none';
+    manualTrack.style.transition = 'transform 0.6s ease-in-out';
+    manualTrack.style.transform = `translateX(-${manualIndex * 100}vw)`;
+  }
+</script>
+  }
+</script>
+
+<section class="inquiry-section">
     <h2>Contact Us / Submit an Inquiry</h2>
     <form>
       <input type="text" placeholder="Full Name *" required>
