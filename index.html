@@ -133,18 +133,24 @@
     .footer-grid div {
       flex: 1 1 200px;
     }
+      nav a:hover {
+      font-weight: 700;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <img src="images/atomay-logo.png" alt="Atomay Logo">
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="products.html">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <header style="padding: 0.3rem 1rem; height: 50px; display: flex; align-items: center; justify-content: space-between; background-color: #001a35;">
+  <img src="images/atomay-logo.png" alt="Atomay Logo" style="height: 50px;">
+  <nav style="display: flex; gap: 2rem; align-items: center;">
+    <a href="index.html" style="font-weight: 400; padding: 0.3rem 0.6rem;">Home</a>
+    <a href="products.html" style="font-weight: 400; padding: 0.3rem 0.6rem;">Products</a>
+    <a href="about.html" style="font-weight: 400; padding: 0.3rem 0.6rem;">About</a>
+    <a href="contact.html" style="font-weight: 400; padding: 0.3rem 0.6rem;">Contact</a>
+  </nav>
+</header>
 
   <div class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
@@ -164,46 +170,46 @@
         <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
       </a>
     </div>
-    <div class="carousel-buttons">
-      <button onclick="changeSlideManual(-1)">&#10094;</button>
-      <button onclick="changeSlideManual(1)">&#10095;</button>
-    </div>
+    <div class="carousel-buttons" style="position: absolute; top: 50%; left: 0; right: 0; display: flex; justify-content: space-between; padding: 0 1rem; transform: translateY(-50%); pointer-events: none;">
+  <button onclick="changeSlideManual(-1)" style="pointer-events: all; background: #ffffff10; border: none; color: #ffffff; font-size: 1.8rem; width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
+    &#10094;
+  </button>
+  <button onclick="changeSlideManual(1)" style="pointer-events: all; background: #ffffff10; border: none; color: #ffffff; font-size: 1.8rem; width: 36px; height: 36px; border-radius: 6px; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 5px rgba(0,0,0,0.2);">
+    &#10095;
+  </button>
+</div>
   </div>
 
   <section class="inquiry-section" style="margin-top: 0;">
     <h2>Contact Us / Submit an Inquiry</h2>
     <form>
-      <input type="text" placeholder="Full Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <textarea rows="4" placeholder="Your Inquiry"></textarea>
+      <input type="text" placeholder="Full Name *" required style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="text" placeholder="Company Name" style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="text" placeholder="Country *" required style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="email" placeholder="Email Address *" required style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="text" placeholder="Phone Number" style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="text" placeholder="Product(s) of Interest *" required style="margin-bottom: 0.5rem; height: 32px;">
+      <input type="text" placeholder="Quantity" style="margin-bottom: 0.5rem; height: 32px;">
+      <textarea rows="4" placeholder="Your Inquiry or Message" style="margin-bottom: 0.5rem;"></textarea>
       <button type="submit">Submit</button>
     </form>
   </section>
 
-  <footer>
-    <div class="footer-grid">
-      <div>
-        <h3>Contact Information</h3>
-        <p>Email: info@atomay.com</p>
-        <p>Phone: +1 234 567 890</p>
-        <p>Address: 123 Innovation Blvd, Toronto, ON, Canada</p>
-      </div>
-      <div>
-        <h3>Quick Links</h3>
-        <p><a href="index.html">Home</a></p>
-        <p><a href="products.html">Products</a></p>
-        <p><a href="about.html">About</a></p>
-        <p><a href="contact.html">Contact</a></p>
-      </div>
-      <div>
-        <h3>Accreditations</h3>
-        <p>ISO 9001 Certified</p>
-        <p>CSA Approved</p>
-        <p>Made in India, Trusted Globally</p>
-      </div>
-    </div>
-    <p style="margin-top: 2rem">&copy; 2025 ATOMAY INC. All rights reserved.</p>
-  </footer>
+  <footer style="padding: 0.3rem 1rem; height: 50px; font-size: 0.8rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+  <div>
+    <strong>Email:</strong> info@atomay.com &nbsp;|&nbsp; 
+    <strong>Phone:</strong> +1 234 567 890
+  </div>
+  <div>
+    <strong>Address:</strong> 123 Innovation Blvd, Toronto, ON
+  </div>
+  <div>
+    <strong>Quick Links:</strong> <a href="products.html" style="color: #fff; text-decoration: underline;">Products</a>
+  </div>
+  <div>
+    © 2025 ATOMAY INC &nbsp;|&nbsp; ISO 9001 &nbsp;|&nbsp; CSA Approved
+  </div>
+</footer>
 
   <script>
     let currentSlide = 0;
