@@ -59,46 +59,35 @@
     }
     .carousel-track {
       display: flex;
-      transition: transform 0.6s ease-in-out;
-      width: 500vw;
+      width: max-content;
+      animation: scrollCarousel 25s steps(1, end) infinite;
     }
     .carousel-slide {
-      width: 100vw;
+      flex: 0 0 100vw;
       display: flex;
       justify-content: center;
       align-items: center;
-      opacity: 0.3;
-      transition: opacity 0.6s ease-in-out;
-    }
-    .carousel-slide.active {
-      opacity: 1;
     }
     .carousel-slide img {
       width: 100%;
       height: auto;
       object-fit: contain;
     }
+    @keyframes scrollCarousel {
+      0% { transform: translateX(0); }
+      20% { transform: translateX(0); }
+      25% { transform: translateX(-100vw); }
+      45% { transform: translateX(-100vw); }
+      50% { transform: translateX(-200vw); }
+      70% { transform: translateX(-200vw); }
+      75% { transform: translateX(-300vw); }
+      95% { transform: translateX(-300vw); }
+      100% { transform: translateX(-400vw); }
+    }
+      100% { transform: translateX(-400vw); }
+    }
     .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 1rem;
-    }
-    .carousel-buttons button {
-      background-color: transparent;
-      color: #ffffff;
-      font-size: 2rem;
-      border: none;
-      padding: 0.3rem 0.6rem;
-      border-radius: 4px;
-      transition: background-color 0.3s ease;
-    }
-    .carousel-buttons button:hover {
-      background-color: #ffffff33;
+      display: none;
     }
     .inquiry-section input,
     .inquiry-section textarea {
@@ -127,16 +116,23 @@
   </header>
 
   <section class="carousel-container">
-    <div class="carousel-track">
-      <div class="carousel-slide"><img src="images/gradient_mat.jpg" alt="Gradient Control Mat"></div>
-      <div class="carousel-slide active"><img src="images/copper_plate.jpg" alt="Earthing Plate"></div>
-      <div class="carousel-slide"><img src="images/copper_rod.png" alt="Copper Bonded Earth Rods"></div>
-      <div class="carousel-slide"><img src="images/bare_copper_bar.jpg" alt="GI Earthing Rods"></div>
-      <div class="carousel-slide"><img src="images/connection_plate.jpg" alt="Connectors"></div>
-    </div>
-    <div class="carousel-buttons">
-      <button onclick="changeSlide(-1)">&#8249;</button>
-      <button onclick="changeSlide(1)">&#8250;</button>
+    <div class="carousel-track" id="carouselTrack">
+      <a href="product-ground-plate.html" class="carousel-slide">
+        <img src="images/copper_plate.jpg" alt="Ground Plate">
+      </a>
+      <a href="product-earth-rod.html" class="carousel-slide">
+        <img src="images/copper_rod.png" alt="Earth Rod">
+      </a>
+      <a href="product-gradient-mat.html" class="carousel-slide">
+        <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
+      </a>
+      <a href="product-connection-plate.html" class="carousel-slide">
+        <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
+      </a>
+      <!-- Duplicate for seamless loop -->
+      <a href="product-ground-plate.html" class="carousel-slide">
+        <img src="images/copper_plate.jpg" alt="Ground Plate Duplicate">
+      </a>
     </div>
   </section>
 
@@ -170,34 +166,5 @@
       © 2025 ATOMAY INC &nbsp;|&nbsp; ISO 9001 &nbsp;|&nbsp; CSA Approved
     </div>
   </footer>
-
-  <script>
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    let currentIndex = 1; // Start with second element centered
-
-    function updateSlidePosition() {
-      slides.forEach((slide, index) => {
-        slide.classList.remove('active');
-        slide.style.opacity = '0.3';
-      });
-      slides[currentIndex].classList.add('active');
-      slides[currentIndex].style.opacity = '1';
-      const offset = -currentIndex * 100;
-      track.style.transform = `translateX(${offset}vw)`;
-    }
-
-    function changeSlide(direction) {
-      currentIndex = (currentIndex + direction) % slides.length;
-      if (currentIndex < 0) currentIndex = 0; // Prevent backward loop
-      updateSlidePosition();
-    }
-
-    setInterval(() => {
-      changeSlide(1);
-    }, 3000);
-
-    window.onload = updateSlidePosition;
-  </script>
 </body>
 </html>
