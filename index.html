@@ -41,20 +41,20 @@
     .carousel-container {
       flex-grow: 1;
       background-color: rgba(100, 100, 100, 0.4);
-      position: relative;
       overflow: hidden;
       display: flex;
       justify-content: flex-start;
       align-items: center;
       flex-direction: column;
+      padding: 2rem 0;
     }
     .carousel-track {
       display: flex;
       transition: transform 0.6s ease-in-out;
     }
     .carousel-slide {
-      flex: 0 0 80%;
-      margin: 0;
+      flex: 0 0 100%;
+      margin: 0 1rem;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -66,17 +66,15 @@
     }
     .carousel-slide img {
       width: 100%;
-      height: 100%;
+      max-width: 1000px;
+      height: auto;
       object-fit: contain;
     }
     .carousel-buttons {
-      position: absolute;
-      top: 50%;
-      width: 100%;
+      margin-top: 1rem;
       display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 20px;
+      justify-content: center;
+      gap: 2rem;
     }
     .carousel-buttons button {
       background-color: rgba(255,255,255,0.3);
@@ -87,15 +85,48 @@
       padding: 0.5rem 1rem;
       border-radius: 5px;
     }
+    .inquiry-section {
+      background-color: #003366;
+      padding: 2rem;
+      margin: 2rem;
+      border-radius: 10px;
+    }
+    .inquiry-section h2 {
+      margin-bottom: 1rem;
+    }
+    .inquiry-section input,
+    .inquiry-section textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: none;
+      border-radius: 5px;
+    }
+    .inquiry-section button {
+      padding: 0.75rem 1.5rem;
+      background-color: #66c2ff;
+      color: #001f3f;
+      border: none;
+      border-radius: 5px;
+      font-weight: bold;
+      cursor: pointer;
+    }
     footer {
       background-color: #001a35;
-      padding: 1rem;
+      padding: 2rem;
       text-align: center;
       font-size: 0.9rem;
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: left;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .footer-grid div {
+      flex: 1 1 200px;
     }
   </style>
 </head>
@@ -133,8 +164,40 @@
       <button onclick="changeSlideManual(1)">&#10095;</button>
     </div>
   </div>
+
+  <section class="inquiry-section" style="margin-top: 100vh;">
+    <h2>Contact Us / Submit an Inquiry</h2>
+    <form>
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea rows="4" placeholder="Your Inquiry"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
   <footer>
-    <p>&copy; 2025 ATOMAY INC. All rights reserved.</p>
+    <div class="footer-grid">
+      <div>
+        <h3>Contact Information</h3>
+        <p>Email: info@atomay.com</p>
+        <p>Phone: +1 234 567 890</p>
+        <p>Address: 123 Innovation Blvd, Toronto, ON, Canada</p>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
+        <p><a href="index.html">Home</a></p>
+        <p><a href="products.html">Products</a></p>
+        <p><a href="about.html">About</a></p>
+        <p><a href="contact.html">Contact</a></p>
+      </div>
+      <div>
+        <h3>Accreditations</h3>
+        <p>ISO 9001 Certified</p>
+        <p>CSA Approved</p>
+        <p>Made in India, Trusted Globally</p>
+      </div>
+    </div>
+    <p style="margin-top: 2rem">&copy; 2025 ATOMAY INC. All rights reserved.</p>
   </footer>
 
   <script>
@@ -155,7 +218,7 @@
           slide.style.opacity = '0';
         }
       });
-      track.style.transform = `translateX(-${currentSlide * 80}%)`;
+      track.style.transform = `translateX(-${currentSlide * 60}%)`;
     }
 
     function changeSlide() {
