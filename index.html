@@ -21,7 +21,7 @@
     }
     header, footer {
       background-color: #001a35;
-      height: 40px;
+      height: 60px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -48,70 +48,52 @@
       border-radius: 4px;
     }
     .carousel-container {
-      flex-grow: 1;
-      background-color: rgba(100, 100, 100, 0.2);
-      overflow: hidden;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
       position: relative;
+      overflow: hidden;
+      width: 100%;
+      height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     .carousel-track {
       display: flex;
-      width: max-content;
-      animation: scrollCarousel 30s ease-in-out infinite;
+      width: 100%;
+      transition: transform 1s ease-in-out;
     }
     .carousel-slide {
-      flex: 0 0 100vw;
+      width: 100vw;
+      flex-shrink: 0;
+      height: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
     }
     .carousel-slide img {
-      width: 100%;
-      height: auto;
+      max-height: 90%;
+      max-width: 90%;
       object-fit: contain;
     }
-    @keyframes scrollCarousel {
-  0% { transform: translateX(0); }
-  16.6% { transform: translateX(0); }
-  20% { transform: translateX(-100vw); }
-  36.6% { transform: translateX(-100vw); }
-  40% { transform: translateX(-200vw); }
-  56.6% { transform: translateX(-200vw); }
-  60% { transform: translateX(-300vw); }
-  76.6% { transform: translateX(-300vw); }
-  80% { transform: translateX(-400vw); }
-  96.6% { transform: translateX(-400vw); }
-  100% { transform: translateX(-500vw); }
-}
-      10% { transform: translateX(0); }
-      15% { transform: translateX(-100vw); }
-      25% { transform: translateX(-100vw); }
-      30% { transform: translateX(-200vw); }
-      40% { transform: translateX(-200vw); }
-      45% { transform: translateX(-300vw); }
-      55% { transform: translateX(-300vw); }
-      60% { transform: translateX(-400vw); }
-      70% { transform: translateX(-400vw); }
-      75% { transform: translateX(-500vw); }
-      85% { transform: translateX(-500vw); }
-      100% { transform: translateX(-600vw); }
-    }
-      20% { transform: translateX(0); }
-      25% { transform: translateX(-100vw); }
-      45% { transform: translateX(-100vw); }
-      50% { transform: translateX(-200vw); }
-      70% { transform: translateX(-200vw); }
-      75% { transform: translateX(-300vw); }
-      95% { transform: translateX(-300vw); }
-      100% { transform: translateX(-400vw); }
-    }
-      100% { transform: translateX(-400vw); }
-    }
     .carousel-buttons {
+      position: absolute;
+      width: 100%;
       display: flex;
+      justify-content: space-between;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+    }
+    .carousel-buttons button {
+      background-color: transparent;
+      border: none;
+      color: #ccc;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border-radius: 4px;
+    }
+    .carousel-buttons button:hover {
+      background-color: #ffffff33;
     }
     .inquiry-section input,
     .inquiry-section textarea {
@@ -141,54 +123,50 @@
 
   <section class="carousel-container">
     <div class="carousel-track" id="carouselTrack">
-      <a href="product-ground-plate.html" class="carousel-slide">
-        <img src="images/copper_plate.jpg" alt="Ground Plate">
+      <a href="#" class="carousel-slide">
+        <img src="images/product1.jpg" alt="Product 1">
       </a>
-      <a href="product-earth-rod.html" class="carousel-slide">
-        <img src="images/copper_rod.png" alt="Earth Rod">
+      <a href="#" class="carousel-slide">
+        <img src="images/product2.jpg" alt="Product 2">
       </a>
-      <a href="product-ground-bar.html" class="carousel-slide">
-        <img src="images/bare_copper_bar.jpg" alt="Ground Bar">
+      <a href="#" class="carousel-slide">
+        <img src="images/product3.jpg" alt="Product 3">
       </a>
-      <a href="product-connection-plate.html" class="carousel-slide">
-        <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
+      <a href="#" class="carousel-slide">
+        <img src="images/product4.jpg" alt="Product 4">
       </a>
-      <a href="product-gradient-mat.html" class="carousel-slide">
-        <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
-      </a>
-      <!-- Duplicate for seamless loop -->
-      <a href="product-ground-plate.html" class="carousel-slide">
-        <img src="images/copper_plate.jpg" alt="Ground Plate Duplicate">
+      <a href="#" class="carousel-slide">
+        <img src="images/product5.jpg" alt="Product 5">
       </a>
     </div>
     <div class="carousel-buttons">
-  <button onclick="moveCarousel(-1)" style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; color: #ccc; font-size: 2rem; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.3s ease; border-radius: 4px;">❮</button>
-  <button onclick="moveCarousel(1)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background-color: transparent; border: none; color: #ccc; font-size: 2rem; padding: 0.3rem 0.6rem; cursor: pointer; transition: all 0.3s ease; border-radius: 4px;">❯</button>
-</div>
-<style>
-  .carousel-buttons button:hover {
-    background-color: #ffffff33;
-  }
-</style>
-</section>
+      <button onclick="moveCarousel(-1)">❮</button>
+      <button onclick="moveCarousel(1)">❯</button>
+    </div>
+  </section>
 
-<script>
-  let manualIndex = 0;
-  const manualTrack = document.getElementById('carouselTrack');
-  const slides = manualTrack.querySelectorAll('.carousel-slide');
-  const totalSlides = slides.length;
+  <script>
+    let manualIndex = 0;
+    const manualTrack = document.getElementById('carouselTrack');
+    const slides = manualTrack.querySelectorAll('.carousel-slide');
+    const totalSlides = slides.length;
 
-  function moveCarousel(direction) {
-    manualIndex = (manualIndex + direction + totalSlides) % totalSlides;
-    manualTrack.style.animation = 'none';
-    manualTrack.style.transition = 'transform 0.6s ease-in-out';
-    manualTrack.style.transform = `translateX(-${manualIndex * 100}vw)`;
-  }
-</script>
-  }
-</script>
+    function moveCarousel(direction) {
+      manualIndex = (manualIndex + direction + totalSlides) % totalSlides;
+      manualTrack.style.transition = 'transform 1s ease-in-out';
+      manualTrack.style.transform = `translateX(-${manualIndex * 100}vw)`;
+    }
 
-<section class="inquiry-section">
+    setInterval(() => {
+      moveCarousel(1);
+    }, 5000);
+
+    window.addEventListener('load', () => {
+      moveCarousel(0);
+    });
+  </script>
+
+  <section class="inquiry-section">
     <h2>Contact Us / Submit an Inquiry</h2>
     <form>
       <input type="text" placeholder="Full Name *" required>
