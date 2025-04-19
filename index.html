@@ -46,27 +46,23 @@
       display: flex;
       justify-content: center;
       align-items: center;
-    }
-    .carousel {
-      width: 100%;
-      max-width: 800px;
-      height: 500px;
-      display: flex;
-      transition: transform 0.6s ease-in-out;
+      flex-direction: column;
     }
     .carousel-track {
       display: flex;
       transition: transform 0.6s ease-in-out;
-      width: 100%;
-      gap: 0;
     }
     .carousel-slide {
       flex: 0 0 100%;
+      margin: 0;
       display: flex;
       justify-content: center;
       align-items: center;
       opacity: 0.3;
       transition: opacity 0.6s ease-in-out;
+    }
+    .carousel-slide.active {
+      opacity: 1;
     }
     .carousel-slide img {
       width: 100%;
@@ -111,31 +107,28 @@
   </header>
 
   <div class="carousel-container">
-    <div class="carousel">
-      <div class="carousel-track" id="carouselTrack">
-        <a href="product-ground-plate.html" class="carousel-slide">
-          <img src="images/copper_plate.jpg" alt="Ground Plate">
-        </a>
-        <a href="product-ground-bar.html" class="carousel-slide">
-          <img src="images/bare_copper_bar.jpg" alt="Ground Bar">
-        </a>
-        <a href="product-earth-rod.html" class="carousel-slide">
-          <img src="images/copper_rod.png" alt="Earth Rod">
-        </a>
-        <a href="product-gradient-mat.html" class="carousel-slide">
-          <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
-        </a>
-        <a href="product-connection-plate.html" class="carousel-slide">
-          <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
-        </a>
-      </div>
+    <div class="carousel-track" id="carouselTrack">
+      <a href="product-ground-plate.html" class="carousel-slide">
+        <img src="images/copper_plate.jpg" alt="Ground Plate">
+      </a>
+      <a href="product-ground-bar.html" class="carousel-slide">
+        <img src="images/bare_copper_bar.jpg" alt="Ground Bar">
+      </a>
+      <a href="product-earth-rod.html" class="carousel-slide">
+        <img src="images/copper_rod.png" alt="Earth Rod">
+      </a>
+      <a href="product-gradient-mat.html" class="carousel-slide">
+        <img src="images/gradient_mat.jpg" alt="Gradient Control Mat">
+      </a>
+      <a href="product-connection-plate.html" class="carousel-slide">
+        <img src="images/connection_plate.jpg" alt="Grounding Connection Plate">
+      </a>
     </div>
     <div class="carousel-buttons">
-      <button onclick="changeSlide(-1)">&#10094;</button>
-      <button onclick="changeSlide(1)">&#10095;</button>
+      <button onclick="changeSlideManual(-1)">&#10094;</button>
+      <button onclick="changeSlideManual(1)">&#10095;</button>
     </div>
   </div>
-
   <footer>
     <p>&copy; 2025 ATOMAY INC. All rights reserved.</p>
   </footer>
@@ -143,25 +136,31 @@
   <script>
     let currentSlide = 0;
     const track = document.getElementById('carouselTrack');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const totalSlides = slides.length;
+    let slides = Array.from(track.children);
 
     function updateSlidePosition() {
       slides.forEach((slide, index) => {
+        slide.classList.remove('active');
         slide.style.opacity = index === currentSlide ? '1' : '0.3';
       });
-      const offset = -currentSlide * 100;
-      track.style.transform = `translateX(${offset}%)`;
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
     }
 
-    function changeSlide(direction) {
-      currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    function changeSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
       updateSlidePosition();
     }
 
-    setInterval(() => {
-      changeSlide(1);
-    }, 5000);
+    window.addEventListener('load', () => {
+      updateSlidePosition();
+    });
+
+    setInterval(changeSlide, 5000);
+
+    function changeSlideManual(direction) {
+      currentSlide = (currentSlide + direction + slides.length) % slides.length;
+      updateSlidePosition();
+    }
   </script>
 </body>
 </html>
