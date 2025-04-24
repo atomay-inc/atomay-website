@@ -838,7 +838,7 @@ body{
 	Start Feautes CSS
 ===============================*/
 .Feautes{
-	padding-top:100px;
+	padding-top:0;
 }
 .Feautes.index2{
 	padding-top:100px;
@@ -1139,7 +1139,7 @@ body{
 	Start Portfolio CSS
 ============================*/
 .portfolio{
-	background:#FDFDFD;
+	background:#ddd;
 }
 .portfolio .single-pf{
 	position:relative;
