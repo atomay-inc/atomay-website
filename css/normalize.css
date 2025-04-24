@@ -264,8 +264,8 @@ Preloader Area CSS
 
 .preloader .loader {
   position: absolute;
-  width: 80px;
-  height: 80px;
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
   display: inline-block;
   left: 0;
@@ -294,10 +294,10 @@ Preloader Area CSS
   position: absolute;
   border: 4px solid #ffffff;
   border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  left: calc(40% - 21px);
-  top: calc(40% - 21px);
+  width: 100px;
+  height: 100px;
+  left: calc(40% - 38px);
+  top: calc(40% - 38px);
   border-right: 0;
   border-top-color: transparent;
   -webkit-animation: loader-inner 1s cubic-bezier(0.42, 0.61, 0.58, 0.41) infinite;
@@ -309,8 +309,8 @@ Preloader Area CSS
   right: 0;
   left: 0;
   top: 50%;
-  -webkit-transform: translateY(-50%) scale(1.5);
-          transform: translateY(-50%) scale(1.5);
+  -webkit-transform: translateY(-65%) scale(1.5);
+          transform: translateY(-65%) scale(1.5);
 }
 
 .preloader .loader .indicator svg polyline {
@@ -474,7 +474,7 @@ Preloader Area CSS
 }
 .section-title{
 	text-align: center;
-    margin-bottom: 60px;
+    /* margin-bottom: 60px; */
     padding: 0 250px;
 }
 .section-title h2 {

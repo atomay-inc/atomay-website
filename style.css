@@ -2723,8 +2723,8 @@ body{
 	Start Appointment CSS
 ============================*/
 .appointment{
-	background:#fff;
-	padding-top:100px;
+	background:#eee;
+	padding: 50px 0;
 }
 .appointment.single-page {
 	background: #fff;
